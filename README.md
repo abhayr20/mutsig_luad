@@ -4,6 +4,8 @@ This repository contains the code and resources for performing mutational signat
 
 For detailed instructions on mutational signature analysis, please refer to the [tutorial](https://github.com/WCSCourses/Cancer_Genome_Analysis23/blob/main/Modules/Mutational_signature_analysis/MS_Practical_WCSCGA2023.md).
 
+maftools [tutorial](https://bioconductor.org/packages/release/bioc/vignettes/maftools/inst/doc/maftools.html)
+
 ## Raw data
 
 Mutation data for lung adenocarcinoma cohorts are available on [cBioPortal](https://www.cbioportal.org/).
