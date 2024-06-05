@@ -6,7 +6,7 @@ For detailed instructions on mutational signature analysis, please refer to the 
 
 ## Raw data
 
-MAF files for lung adenocarcinoma cohorts are available on [cBioPortal](https://www.cbioportal.org/).
+Mutation data for lung adenocarcinoma cohorts are available on [cBioPortal](https://www.cbioportal.org/).
 1. TCGA PanCancer LUAD: [Download](https://cbioportal-datahub.s3.amazonaws.com/luad_tcga_pan_can_atlas_2018.tar.gz)
-2. SHELOCK never smoker: [Download](https://cbioportal-datahub.s3.amazonaws.com/lung_nci_2022.tar.gz)
+2. SHELOCK never smokers: [Download](https://cbioportal-datahub.s3.amazonaws.com/lung_nci_2022.tar.gz)
 3. OncoSG East Asians: [Download](https://cbioportal-datahub.s3.amazonaws.com/luad_oncosg_2020.tar.gz)
