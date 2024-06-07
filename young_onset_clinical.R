@@ -80,3 +80,32 @@ write.csv(young_40, file = "clinical_data/young_40.csv", row.names = FALSE)
 write.csv(young_45, file = "clinical_data/young_45.csv", row.names = FALSE)
 write.csv(old_60, file = "clinical_data/old_60.csv", row.names = FALSE)
 
+
+# Read mutational data
+maf_tcga_luad <- read.delim('tcga_luad/data_mutations.txt')
+maf_oncosg <- read.delim('oncosg/data_mutations.txt', skip=2, header = TRUE)
+maf_sherlock <- read.delim('sherlock/data_mutations.txt')
+
+# Columns to keep in maf
+cols_to_keep <- c("Hugo_Symbol", "Entrez_Gene_Id", "Center", "NCBI_Build", "Chromosome",
+                  "Start_Position", "End_Position", "Strand", "Variant_Classification",
+                  "Variant_Type", "Reference_Allele", "Tumor_Seq_Allele1",
+                  "Tumor_Seq_Allele2", "dbSNP_RS", "dbSNP_Val_Status", "Tumor_Sample_Barcode")
+
+# Selection of specific columns needed by SigProfiler
+process_maf <- function(maf_df) {
+  maf_df %>%
+    select(all_of(cols_to_keep)) %>%
+    filter(Variant_Type == 'SNP')
+}
+
+# Filter and select columns for each MAF file
+maf_tcga_luad <- process_maf(maf_tcga_luad)
+maf_oncosg <- process_maf(maf_oncosg)
+maf_sherlock <- process_maf(maf_sherlock)
+combined_maf <- bind_rows(maf_tcga_luad, maf_oncosg, maf_sherlock)
+
+dir.create('signatures')       #for signature analysis results
+dir.create('signatures/SPMG/') #for updated MAF file (needed for SigProfilerMatrixGenerator)
+write.table(combined_maf, 'signatures/SPMG/data_mutations.maf', quote = F,
+            row.names = F, sep = '\t')
